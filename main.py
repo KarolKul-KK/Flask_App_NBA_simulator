@@ -5,12 +5,14 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
 
 
+# load by auth.login
 auth = Blueprint('auth', __name__)
 
 # login page
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
+        # get variable from text box
         username = request.form.get('username')
         password = request.form.get('password')
 
@@ -40,6 +42,7 @@ def logout():
 @auth.route('/register', methods=["GET", "POST"])
 def register():
     if request.method == 'POST':
+        # take variable from user
         username = request.form.get('username')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
@@ -54,6 +57,7 @@ def register():
         elif len(password1) < 3:
             flash('Password must be at least 3 characters', category='error')
         else:
+            # save new user in database.db by User class from models.py
             new_user = User(username=username, password=generate_password_hash(password1, method='sha256'))
             db.session.add(new_user)
             db.session.commit()
