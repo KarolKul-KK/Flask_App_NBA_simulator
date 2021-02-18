@@ -40,7 +40,7 @@ def create_app():
     return app
 
 
-# if not find database let's make one 
+# creating database func 
 def create_database(app):
     if not path.exists('flasknba/' + DB_NAME):
         db.create_all(app=app)
