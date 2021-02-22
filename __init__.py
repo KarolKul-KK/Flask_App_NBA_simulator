@@ -23,7 +23,6 @@ def create_app():
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
 
-    # connect with database
     from models import User, Note
 
     # make a database if not exists
@@ -41,7 +40,7 @@ def create_app():
     return app
 
 
-# if not find database let's make one 
+# creating database func 
 def create_database(app):
     if not path.exists('flasknba/' + DB_NAME):
         db.create_all(app=app)
