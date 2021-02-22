@@ -5,9 +5,11 @@ from __init__ import db
 import json
 
 
+# to load for example by views.name
 views = Blueprint('views', __name__)
 
 
+# home page
 @views.route('/', methods=['GET', 'POST'])
 @login_required
 def home():
