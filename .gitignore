@@ -1,0 +1,5 @@
+
+venv/bin/activate
+*.xml
+*.xml
+.idea/modules.xml
