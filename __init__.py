@@ -27,7 +27,6 @@ def create_app():
 
     # make a database if not exists
     create_database(app)
-
     # from flask_login
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
@@ -45,3 +44,5 @@ def create_database(app):
     if not path.exists('flasknba/' + DB_NAME):
         db.create_all(app=app)
         print('Created Database!')
+
+
